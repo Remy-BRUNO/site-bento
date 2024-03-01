@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem auto;
+  max-width: 1440px;
+  width: 90vw;
+}
+.logo {
+  filter: drop-shadow(3px 3px 10px #000000);
+  border-radius: 10px;
+  width: clamp(3.125rem, 9.434vw + 0.884rem, 9.375rem);
+  height: clamp(3.125rem, 9.434vw + 0.884rem, 9.375rem);
+}
+.title {
+  text-shadow: 3px 3px 10px #000000;
+}
+.socials {
+  display: flex;
+  gap: 0.5rem;
+  align-self: flex-start;
+}
+.socials a img {
+  width: 30px;
+  filter: drop-shadow(3px 3px 10px #000000);
+  height: 30px;
+}
+@media screen and (min-width: 800px) {
+}
