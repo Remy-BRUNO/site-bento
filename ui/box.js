@@ -1,8 +1,11 @@
 "use client"
 
+import { useState } from "react"
 import styled from "styled-components"
+import Modal from "./modal"
 
-const GridBox = styled.div`
+const GridBox = styled.article`
+  cursor: pointer;
   background-color: aliceblue;
   border-radius: 20px;
   border: ${(props) => props.$borderColor || " 5px solid #878787"};
@@ -17,7 +20,8 @@ const GridBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  & p {
+  overflow: hidden;
+  & .info {
     transition: all 0.5s ease-in-out;
     opacity: 0;
     text-align: center;
@@ -27,14 +31,14 @@ const GridBox = styled.div`
   }
   &:hover {
     background-size: 250%;
-    & p {
+    & .info {
       opacity: 1;
       background-color: rgb(255 255 255 / 30%);
       backdrop-filter: blur(10px);
     }
   }
 `
-const TextBox = styled.div`
+const TextBox = styled.article`
   width: ${(porps) => porps.$boxWidth || "300px"};
   height: ${(porps) => porps.$boxHeight || "300px"};
   text-align: center;
@@ -61,6 +65,12 @@ export default function Box({
   pcBoxWidth,
   pcBoxHeight,
 }) {
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClick = () => {
+    setShowModal(!showModal)
+  }
+
   return bgImage !== "none" ? (
     <GridBox
       className={id}
@@ -69,8 +79,16 @@ export default function Box({
       $borderColor={borderColor}
       $bgImage={bgImage}
       $gridId={gridId}
+      onClick={handleClick}
     >
-      <p>{title}</p>
+      <Modal
+        title={title}
+        info={info}
+        showModal={showModal}
+        handleClick={handleClick}
+        image={bgImage}
+      />
+      <p className="info">{title}</p>
     </GridBox>
   ) : (
     <TextBox
