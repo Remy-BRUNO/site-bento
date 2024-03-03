@@ -2,6 +2,7 @@ import styles from "./page.module.css"
 import Box from "@/ui/box"
 import { arrayBox } from "@/lib/data"
 import Navbar from "@/ui/navbar"
+import Footer from "@/ui/footer"
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
           )
         })}
       </main>
+      <Footer />
     </div>
   )
 }
